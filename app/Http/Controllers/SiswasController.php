@@ -14,8 +14,9 @@ class SiswasController extends Controller
      */
     public function index()
     {
-        $siswa = Siswa::all();
-        $siswa = Siswa::paginate(3);
+
+        $siswa = Siswa::orderBy('created_at', 'desc')
+                        ->paginate(3);
         return view('siswa.index', ['siswa' => $siswa]);
     }
 
